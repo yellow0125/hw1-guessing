@@ -46,7 +46,7 @@ export default function App() {
     <>
       <View style={styles.container}>
         <LinearGradient
-          colors={['#C1CBD7', '#B5C4B1', '#C1CBD7']}
+          colors={['#ffffe5','#006837', '#238443','#41ab5d','#78c679','#addd8e', '#d9f0a3', '#f7fcb9','#ffffe5',]}
           style={styles.background}
         />
         <Header title='Guess My Number'>
