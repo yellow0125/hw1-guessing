@@ -7,6 +7,7 @@
 *There are 3 screens in this app that switched between them programmatically*
 
 ## ScreenShots
+<img src="https://github.com/yellow0125/hw1-guessing/blob/main/img/start.png" width="100" height="100" alt="startscreen"/>
 ![image](https://github.com/yellow0125/hw1-guessing/blob/main/img/start.png)
 
 Screenshot of the first screen. The two buttons, one it is used to reset and clean the input and the other to confirm user's input. It accepts only number form 1020 to 1029.
