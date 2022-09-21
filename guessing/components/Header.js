@@ -14,15 +14,26 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
   title:{
-    borderStyle:'solid',
+ 
     borderColor:'#656565',
     borderRadius: 10,
     borderWidth: 1,
-    marginTop: 100,
+
+    marginTop: 22,
     marginBottom:50,
+
     alignSelf: "center",
     justifyContent: 'center',
     fontSize:25,
-    color:'#4f5555'
+    color:'#4f5555',
+    
+    width: '100%',
+    backgroundColor:'#2a5caa',
+    paddingTop: 36,
+    height: 90,
+    paddingLeft:110 ,
+    paddingRight:110 ,
+    color:'lightgrey'
+
   },
 });

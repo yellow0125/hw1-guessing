@@ -9,7 +9,10 @@ export default function Footer() {
         <Icon 
         name='dragon'
         type='font-awesome-5'
+        color={'grey'}
         />
     </View>
   )
 }
+
+

@@ -9,8 +9,7 @@ export default function Starting() {
   return (
     <>
       <View>
-        <Header title ='Guess My Number'>
-        </Header>
+        
       </View>
       <View>
         <Card></Card>

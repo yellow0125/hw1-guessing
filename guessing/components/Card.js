@@ -7,11 +7,15 @@ export default function Card() {
       style={styles.square}
     >
       <Text style={styles.title}>Enter a Number</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput
+        style={styles.input}
+  
+        ></TextInput>
       <View style={styles.buttons}>
         <Button
           title='reset'
-          color='#965454' />
+          color='#965454'
+          />
 
         <Button
           title='confirm'
@@ -38,17 +42,17 @@ const styles = StyleSheet.create({
     height: 200,
     width: 300,
     shadowColor: "black",
-    shadowOffset:{width:0,height:0},
-    shadowRadius:10,
-    shadowOpacity:0.15,
-    elevation:10,
-    
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 10,
+    shadowOpacity: 0.15,
+    elevation: 10,
+
   },
   input: {
     alignSelf: "center",
     width: 80,
     height: 50,
-    marginTop:15 ,
+    marginTop: 15,
     borderBottomWidth: 1,
     borderColor: '#faead3',
     padding: 10,
