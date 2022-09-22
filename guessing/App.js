@@ -50,13 +50,12 @@ export default function App(props) {
     content = <EndScreen userGuess={userGuess} random={random} onRestart={newGameHandler} />
   }
 
-
   return (
     <>
       <View style={styles.container}>
         <LinearGradient
           colors={[
-            Colors.BgDarkGreen, 
+            Colors.BgDarkGreen,
             Colors.BgDarkGreen,
             Colors.BgGreen,
             Colors.BgLightGreen,
@@ -64,7 +63,7 @@ export default function App(props) {
             Colors.BgYellow,
             Colors.BgLightYellow,
             Colors.BgLighterYellow,
-            Colors.BgWhite, ]}
+            Colors.BgWhite,]}
           style={styles.background}
         />
         <Header title='Guess My Number'>
@@ -80,7 +79,6 @@ export default function App(props) {
 
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

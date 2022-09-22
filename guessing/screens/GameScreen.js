@@ -2,7 +2,8 @@ import {
   View,
   StyleSheet,
   Text,
-  Button
+  Image,
+  Dimensions
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
@@ -28,6 +29,15 @@ export default function GameScreen(props) {
     <View>
       <Card>
         <Text style={styles.title}>{msg}</Text>
+        {msg == "Congrats! You Won!" ? (
+          <View style={styles.imageContainer}>
+            <Image
+              source={require('../assets/won.png')}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          </View>
+        ) : ('')}
       </Card>
       {msg !== "Congrats! You Won!" ? (
         <Buttons button1='I am Done' button2='Guess Again' onPress1={props.onGameOver} onPress2={props.onBacktoGame}></Buttons>
@@ -35,7 +45,6 @@ export default function GameScreen(props) {
         <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
       )}
     </View>
-
   )
 }
 
@@ -57,4 +66,15 @@ const styles = StyleSheet.create({
     marginTop: 25,
     width: 280,
   },
+  imageContainer: {
+    width: Dimensions.get('window').width * 0.7,
+    height: Dimensions.get('window').width * 0.7,
+    overflow: "hidden",
+    marginVertical: Dimensions.get('window').height / 5
+  },
+  image: {
+    width: "100%",
+    height: "100%"
+  },
+
 });

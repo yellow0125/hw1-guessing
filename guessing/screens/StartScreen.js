@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  Button,
   Alert,
   Keyboard,
   TouchableWithoutFeedback
@@ -16,7 +15,6 @@ import Buttons from '../components/Buttons';
 export default function StartScreen(props) {
 
   const [input, setInput] = useState('')
-
   const numberInputHandler = newInput => {
     setInput(newInput);
   };
@@ -61,7 +59,6 @@ export default function StartScreen(props) {
       </View>
       {/* <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton> */}
     </TouchableWithoutFeedback>
-
   )
 }
 
