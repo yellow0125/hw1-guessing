@@ -15,6 +15,7 @@ export default function StartScreen() {
 
   const [input, setInput] = useState('')
   const [confirm, setConfirm] = useState(false);
+  const [inputNumber, setInputNumber] = useState();
 
   const numberInputHandler = newInput => {
     setInput(newInput);
@@ -33,7 +34,9 @@ export default function StartScreen() {
       ]);
       return;
     }
+
     setConfirm(true);
+    setInputNumber(parseInt(input))
     setInput("");
     Keyboard.dismiss();
   };
@@ -58,12 +61,12 @@ export default function StartScreen() {
         <View style={styles.buttons}>
           <Button
             title='reset'
-            color='#965454'
+            color='#ff4676'
             onPress={resetInputHandler}
           />
           <Button
             title='confirm'
-            color='#2a5caa'
+            color='#1d91c0'
             onPress={confirmInputHandler}
           />
         </View>
@@ -77,8 +80,9 @@ const styles = StyleSheet.create({
     margin: 10,
     alignSelf: "center",
     justifyContent: 'center',
-    fontSize: 20,
-    color: '#faead3'
+    fontSize: 22,
+    color: '#072c1d',
+    fontWeight: 'bold',
   },
   input: {
     alignSelf: "center",
@@ -86,11 +90,10 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 15,
     borderBottomWidth: 1,
-    borderColor: '#faead3',
+    borderColor: '#072c1d',
     padding: 10,
   },
   buttons: {
-
     alignSelf: "center",
     flexDirection: 'row',
     marginHorizontal: 20,

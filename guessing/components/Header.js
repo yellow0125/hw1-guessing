@@ -11,7 +11,7 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
   title:{
-    borderColor:'#656565',
+    borderColor:'#006837',
     borderRadius: 10,
     borderWidth: 1,
     marginTop: 22,
@@ -19,14 +19,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: 'center',
     fontSize:25,
+    
     color:'#4f5555',
     width: '100%',
-    backgroundColor:'#2a5caa',
+    backgroundColor:'#006837',
     paddingTop: 36,
     height: 90,
     paddingLeft:110 ,
     paddingRight:110 ,
-    color:'lightgrey',
+    color:'white',
     fontWeight:'bold'
   },
 });
