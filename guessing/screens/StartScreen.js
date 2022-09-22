@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttons: {
-
     alignSelf: "center",
     flexDirection: 'row',
     marginHorizontal: 20,

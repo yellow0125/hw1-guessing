@@ -2,10 +2,12 @@ import {
   View,
   StyleSheet,
   Text,
-  Button,
+  Button
+
 } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card'
+import SingleButton from '../components/SingleButton'
 
 
 function getMessage(props) {
@@ -23,28 +25,23 @@ export default function GameScreen(props) {
 
   return (
     <View>
-        <Card>
-          <Text style={styles.title}>You have chosen blbsssslassssssbla</Text>
-        </Card>
-        <View style={styles.buttons}>
-            <Button
-              title="I'm done"
-              color='#ff4676'
-              onPress={()=>props.onGameOver}
-              
-            />
-            <Button
-              title='Let me guess again'
-              color='#1d91c0'
-    
-            />
-          </View>
-          
+      <Card>
+        {/* <Text style={styles.title}>You have chosen 1028, That's not my number! Guess lower!</Text> */}
+        <Text style={styles.title}>Congrats! You Won!</Text>
+      </Card>
+      {/* <View style={styles.buttons}>
           <Button
-              title='Thank you!'
-              color='#1d91c0'
-              onPress={()=>props.onGameOver}
-            />
+            title="I am Done"
+            color='#ff4676'
+          />
+          <Button
+            title='Guess Again'
+            color='#1d91c0'
+          />
+        </View> */}
+
+
+      <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
     </View>
   )
 }
@@ -52,11 +49,12 @@ export default function GameScreen(props) {
 const styles = StyleSheet.create({
   title: {
     margin: 10,
+    padding: 30,
     alignSelf: "center",
     justifyContent: 'center',
-    fontSize: 22,
+    fontSize: 21,
     color: '#072c1d',
-    fontWeight: 'bold',
+    lineHeight:35
   },
   input: {
     alignSelf: "center",
@@ -68,7 +66,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttons: {
-
     alignSelf: "center",
     flexDirection: 'row',
     marginHorizontal: 20,

@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import TitleText from '../components/TitleText'
-import Button from '../components/Button'
+import SingleButton from '../components/SingleButton'
 export default function EndScreend(props) {
   return (
     <View>
@@ -26,7 +26,7 @@ export default function EndScreend(props) {
       </View>
       <Text style={styles.title}>Here is your picture...</Text>
 
-      <Button onPress={props.onRestart}>New Game</Button>
+      <SingleButton onPress={props.onRestart}>New Game</SingleButton>
 
     </View>
   )
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 18,
     color: '#072c1d',
-    marginBottom: 35,
     marginTop: -20
   },
   imageContainer: {

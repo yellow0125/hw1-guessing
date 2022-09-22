@@ -56,8 +56,8 @@ export default function App(props) {
         <Header title='Guess My Number'>
         </Header>
         {/* {content} */}
-        <GameScreen/>
-        {/* <EndScreen/> */}
+        {/* <GameScreen/> */}
+        <EndScreen/>
         {/* <StartScreen></StartScreen> */}
         <StatusBar style="auto" />
       </View>

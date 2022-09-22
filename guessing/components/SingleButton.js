@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 10,
     borderRadius: 50,
-    width:'50%'
+    width:'50%',
+    marginTop:35
   },
   buttonText: {
     alignSelf: "center",
