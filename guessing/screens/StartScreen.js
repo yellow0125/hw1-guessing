@@ -37,7 +37,7 @@ export default function StartScreen(props) {
     setInputNumber(parseInt(input))
     setInput("");
     Keyboard.dismiss();
-    // props.onStartGame(inputNumber)
+    props.onStartGame(inputNumber)
   }
 
 
@@ -64,8 +64,8 @@ export default function StartScreen(props) {
             <Button
               title='confirm'
               color='#1d91c0'
-              // onPress={confirmInputHandler}
-              onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
+              onPress={confirmInputHandler}
+              // onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
             />
           </View>
         </Card>
