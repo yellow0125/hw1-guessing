@@ -41,7 +41,7 @@ export default function App(props) {
 
   let content = <StartScreen onStartGame={startGameHandler} />
   if (userGuess && count <= 0) {
-    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} />
+    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} onStartGame={startGameHandler}/>
   } else if (count > 0) {
     content = <EndScreen userGuess={userGuess} onRestart={newGameHandler} />
   }
@@ -55,7 +55,9 @@ export default function App(props) {
         />
         <Header title='Guess My Number'>
         </Header>
-        {content}
+        {/* {content} */}
+        <GameScreen/>
+        {/* <EndScreen/> */}
         {/* <StartScreen></StartScreen> */}
         <StatusBar style="auto" />
       </View>
