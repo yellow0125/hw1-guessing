@@ -20,11 +20,13 @@ export default function App(props) {
   const [isgameStart, setGameStart] = useState(false)
   const [isgameOver, setGameOver] = useState(false)
 
-  const randomNumber = () => {
+  const newGameHandler = () => {
     setRandom(getRandom(1020, 1029))
+    setGameStart(false)
+    setGameOver(false)
     // console.log(random)
   }
-  const newGameHandler = () => {
+  const backToGameHandler = () => {
     setGameStart(false)
     setGameOver(false)
   }
@@ -38,15 +40,14 @@ export default function App(props) {
   const gameOverHandler = () => {
     setGameOver(true)
     setGameStart(false)
-    setRandom(getRandom(1020, 1029))
   }
 
-  let content = <StartScreen onStartGame={startGameHandler} onRandomNum={randomNumber} />
+  let content = <StartScreen onStartGame={startGameHandler} />
   if (isgameStart) {
-    content = <GameScreen userGuess={userGuess} random={random} onGameOver={gameOverHandler} onBacktoGame={newGameHandler} />
+    content = <GameScreen userGuess={userGuess} random={random} onGameOver={gameOverHandler} onBacktoGame={backToGameHandler} />
   }
   else if (isgameOver) {
-    content = <EndScreen userGuess={userGuess} onRestart={newGameHandler} />
+    content = <EndScreen userGuess={userGuess} random={random} onRestart={newGameHandler} />
   }
 
 

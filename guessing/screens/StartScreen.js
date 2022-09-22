@@ -69,7 +69,7 @@ export default function StartScreen(props) {
           </View>
         </Card>
       </View>
-      <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton>
+      {/* <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton> */}
     </>
   )
 }
