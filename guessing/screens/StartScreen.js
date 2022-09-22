@@ -15,6 +15,7 @@ export default function StartScreen() {
 
   const [input, setInput] = useState('')
   const [confirm, setConfirm] = useState(false);
+  const [inputNumber, setInputNumber] = useState();
 
   const numberInputHandler = newInput => {
     setInput(newInput);
@@ -33,7 +34,9 @@ export default function StartScreen() {
       ]);
       return;
     }
+
     setConfirm(true);
+    setInputNumber(parseInt(input))
     setInput("");
     Keyboard.dismiss();
   };
@@ -79,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 22,
     color: '#072c1d',
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
   input: {
     alignSelf: "center",

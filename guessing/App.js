@@ -1,57 +1,62 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import StartScreen from './screens/StartScreen';
-import GameScreen from './screens/GameScreen';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useState} from 'react';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
-import { useState } from 'react';
+import StartScreen from './screens/StartScreen';
+import GameScreen from './screens/GameScreen';
 import EndScreen from './screens/EndScreen';
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * max + min)
 }
 
-function getMessage(guess, random) {
-  if (!isNaN(guess) || guess < 1020 || guess > 1029) {
-    return 'Please Enter a Number From 1020 to 1029'
-  }
-  if (guess < random) { return 'You have chose' + guess + 'That is not my number! Guess higher' }
-  if (guess > random) { return 'You have chose' + guess + 'That is not my number! Guess lower' }
-  if (guess = random) { return 'Congrats! You Won!' }
-}
 
-export default function App() {
+
+export default function App(props) {
 
   const [random, setRandom] = useState(getRandom(1020, 1029))
-  const [count, setCount] = useState(0)
+
+  const [userGuess, setUserGuess] = useState('')
   const [msg, setMsg] = useState('')
+  const [count, setCount] = useState(0)
 
   const newGameHandler = () => {
     setRandom(getRandom(1020, 1029))
-    setCount(0)
-    setMsg('')
+    setUserGuess(null)
+    setCount = 0
   }
 
-  const startGameHandler = () => {
-
+  const startGameHandler = (inputNumber) => {
+    setUserGuess(inputNumber)
+    setCount = 0
   }
 
-  const gameOverHandler = () => {
+  const gameOverHandler = (numofRounds) => {
+    setCount = (numofRounds)
     setMsg('Here is your picture')
   }
 
+  let content = <StartScreen onStartGame={startGameHandler} />
+  if (userGuess && count <= 0) {
+    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} />
+  } else if (count > 0) {
+    content = <EndScreen userGuess={userGuess} onRestart={newGameHandler} />
+  }
 
   return (
     <>
       <View style={styles.container}>
         <LinearGradient
-          colors={['#ffffe5','#006837', '#238443','#41ab5d','#78c679','#addd8e', '#d9f0a3', '#f7fcb9','#ffffe5',]}
+          colors={['#ffffe5', '#006837', '#238443', '#41ab5d', '#78c679', '#addd8e', '#d9f0a3', '#f7fcb9', '#ffffe5',]}
           style={styles.background}
         />
         <Header title='Guess My Number'>
         </Header>
-        <StartScreen></StartScreen>
+        {content}
+        {/* <StartScreen></StartScreen> */}
         <StatusBar style="auto" />
       </View>
       <View style={styles.footer} >
