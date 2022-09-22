@@ -8,21 +8,36 @@ import {
 import React from 'react'
 import TitleText from '../components/TitleText'
 import SingleButton from '../components/SingleButton'
-export default function EndScreend(props) {
+export default function EndScreen(props) {
+  const { userGuess, random } = props
+  const url = "https://picsum.photos/id/" + random +"/100/100"
+  console.log(url)
+  console.log('________________')
   return (
     <View>
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
-        <Image
-          // source={{
-          //   uri:
-          //     "https://i.pinimg.com/originals/d3/bc/b1/d3bcb15ddfcda97897a4bbce49cd5feb.png"
-          // }}
-          // source={require('../assets/kiwi.jpg')}
-          source={require('../assets/fail.png')}
-          style={styles.image}
-          resizeMode="cover"
-        />
+        {userGuess !== random ? (
+          <Image
+            // source={{
+            //   uri:
+            //     "https://i.pinimg.com/originals/d3/bc/b1/d3bcb15ddfcda97897a4bbce49cd5feb.png"
+            // }}
+            // source={require('../assets/kiwi.jpg')}
+            source={require('../assets/fail.png')}
+            style={styles.image}
+            resizeMode="cover"
+          />) : (
+          <Image
+            source={{
+              uri:url
+            }}
+            style={styles.image}
+            resizeMode="cover"
+          />
+
+        )}
+
       </View>
       <Text style={styles.title}>Here is your picture...</Text>
 

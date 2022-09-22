@@ -6,15 +6,16 @@ import {
   Button,
   Alert,
   Keyboard,
-  TouchableWithoutFeedback
 } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card';
+import SingleButton from '../components/SingleButton'
 
-export default function StartScreen() {
 
+export default function StartScreen(props) {
+
+  
   const [input, setInput] = useState('')
-  const [confirm, setConfirm] = useState(false);
   const [inputNumber, setInputNumber] = useState();
 
   const numberInputHandler = newInput => {
@@ -23,7 +24,6 @@ export default function StartScreen() {
 
   const resetInputHandler = () => {
     setInput("");
-    setConfirm(false);
   };
 
   const confirmInputHandler = () => {
@@ -34,44 +34,43 @@ export default function StartScreen() {
       ]);
       return;
     }
-
-    setConfirm(true);
-    setInputNumber(parseInt(input))
-    setInput("");
-    Keyboard.dismiss();
-  };
+    props.onStartGame(parseInt(input))
+    setInput("")
+    Keyboard.dismiss()
+  }
 
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}>
-      <Card>
-        <Text style={styles.title}>Enter a Number</Text>
-        <TextInput
-          style={styles.input}
-          blurOnSubmit
-          autoCaptalize="none"
-          keyboardType="phone-pad"
-          value={input}
-          onChangeText={numberInputHandler}
+    <>
+      <View>
+        <Card>
+          <Text style={styles.title}>Enter a Number</Text>
+          <TextInput
+            style={styles.input}
+            blurOnSubmit
+            autoCaptalize="none"
+            keyboardType="phone-pad"
+            value={input}
+            onChangeText={numberInputHandler}
 
-        />
-        <View style={styles.buttons}>
-          <Button
-            title='reset'
-            color='#ff4676'
-            onPress={resetInputHandler}
           />
-          <Button
-            title='confirm'
-            color='#1d91c0'
-            onPress={confirmInputHandler}
-          />
-        </View>
-      </Card>
-    </TouchableWithoutFeedback>
+          <View style={styles.buttons}>
+            <Button
+              title='reset'
+              color='#ff4676'
+              onPress={resetInputHandler}
+            />
+            <Button
+              title='confirm'
+              color='#1d91c0'
+              onPress={confirmInputHandler}
+              // onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
+            />
+          </View>
+        </Card>
+      </View>
+      {/* <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton> */}
+    </>
   )
 }
 
