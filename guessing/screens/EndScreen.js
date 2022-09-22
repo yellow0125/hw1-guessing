@@ -10,9 +10,8 @@ import TitleText from '../components/TitleText'
 import SingleButton from '../components/SingleButton'
 export default function EndScreen(props) {
   const { userGuess, random } = props
-  console.log('endofgame')
-  console.log(userGuess)
-  console.log(random)
+  const url = "https://picsum.photos/id/" + random +"/100/100"
+  console.log(url)
   console.log('________________')
   return (
     <View>
@@ -31,8 +30,7 @@ export default function EndScreen(props) {
           />) : (
           <Image
             source={{
-              uri:
-                " https://picsum.photos/id/1023"
+              uri:url
             }}
             style={styles.image}
             resizeMode="cover"
