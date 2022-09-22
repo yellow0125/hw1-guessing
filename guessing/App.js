@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-
+import Colors from './constants/Colors';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import StartScreen from './screens/StartScreen';
@@ -55,13 +55,22 @@ export default function App(props) {
     <>
       <View style={styles.container}>
         <LinearGradient
-          colors={['#ffffe5', '#006837', '#238443', '#41ab5d', '#78c679', '#addd8e', '#d9f0a3', '#f7fcb9', '#ffffe5',]}
+          colors={[
+            Colors.BgDarkGreen, 
+            Colors.BgDarkGreen,
+            Colors.BgGreen,
+            Colors.BgLightGreen,
+            Colors.BgDarkYellow,
+            Colors.BgYellow,
+            Colors.BgLightYellow,
+            Colors.BgLighterYellow,
+            Colors.BgWhite, ]}
           style={styles.background}
         />
         <Header title='Guess My Number'>
         </Header>
         {content}
-        {console.log(random)}
+        {/* {console.log(random)} */}
         <StatusBar style="auto" />
       </View>
       <View style={styles.footer} >
@@ -77,14 +86,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-
   },
   background: {
     position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
-    height: 800,
+    height: 900,
   },
   footer: {
     alignItems: 'center',

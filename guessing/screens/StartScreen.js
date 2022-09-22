@@ -6,17 +6,15 @@ import {
   Button,
   Alert,
   Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card';
-import SingleButton from '../components/SingleButton'
-
+import Colors from '../constants/Colors';
 
 export default function StartScreen(props) {
 
-  
   const [input, setInput] = useState('')
-  const [inputNumber, setInputNumber] = useState();
 
   const numberInputHandler = newInput => {
     setInput(newInput);
@@ -39,9 +37,11 @@ export default function StartScreen(props) {
     Keyboard.dismiss()
   }
 
-
   return (
-    <>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
       <View>
         <Card>
           <Text style={styles.title}>Enter a Number</Text>
@@ -52,35 +52,36 @@ export default function StartScreen(props) {
             keyboardType="phone-pad"
             value={input}
             onChangeText={numberInputHandler}
-
+            maxLength={4}
           />
           <View style={styles.buttons}>
             <Button
               title='reset'
-              color='#ff4676'
+              color={Colors.ButtonRed}
               onPress={resetInputHandler}
             />
             <Button
               title='confirm'
-              color='#1d91c0'
+              color={Colors.ButtonBlue}
               onPress={confirmInputHandler}
-              // onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
+            // onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
             />
           </View>
         </Card>
       </View>
       {/* <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton> */}
-    </>
+    </TouchableWithoutFeedback>
+
   )
 }
 
 const styles = StyleSheet.create({
   title: {
-    margin: 10,
     alignSelf: "center",
     justifyContent: 'center',
+    margin: 10,
+    color: Colors.Title,
     fontSize: 22,
-    color: '#072c1d',
     fontWeight: 'bold',
   },
   input: {
@@ -88,17 +89,17 @@ const styles = StyleSheet.create({
     width: 80,
     height: 50,
     marginTop: 15,
-    borderBottomWidth: 1,
-    borderColor: '#072c1d',
     padding: 10,
+    borderBottomWidth: 1,
+    borderColor: Colors.Title,
   },
   buttons: {
     alignSelf: "center",
+    justifyContent: 'space-around',
     flexDirection: 'row',
     marginHorizontal: 20,
     marginTop: 25,
     width: 280,
-    justifyContent: 'space-around',
   },
 });
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Colors from "../constants/Colors";
 
 export default function Button(props) {
   return (
@@ -15,17 +16,18 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: "center",
     justifyContent: 'center',
-    backgroundColor:'#f7287b',
+    marginTop:35,
     paddingVertical: 12,
     paddingHorizontal: 10,
+    backgroundColor:Colors.MainButton,
     borderRadius: 50,
     width:'50%',
-    marginTop:35
+    
   },
   buttonText: {
     alignSelf: "center",
     justifyContent: 'center',
-    color: "white",
+    color: Colors.White,
     fontSize: 18,
     fontWeight:'bold'
   }
