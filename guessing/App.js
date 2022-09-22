@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState} from 'react';
+import { useState } from 'react';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -10,41 +10,53 @@ import GameScreen from './screens/GameScreen';
 import EndScreen from './screens/EndScreen';
 
 function getRandom(min, max) {
-  return Math.floor(Math.random() * max + min)
+  return Math.floor(Math.random() * (max - min) + min)
 }
-
-
 
 export default function App(props) {
 
   const [random, setRandom] = useState(getRandom(1020, 1029))
-
   const [userGuess, setUserGuess] = useState('')
+
   const [msg, setMsg] = useState('')
+  const [isgameStart, setGameStart] = useState(false)
+  const [isgameOver, setGameOver] = useState(false)
   const [count, setCount] = useState(0)
 
+  const randomNumber = () => {
+    setRandom(getRandom(1020, 1029))
+    console.log(random)
+  }
   const newGameHandler = () => {
     setRandom(getRandom(1020, 1029))
     setUserGuess(null)
-    setCount = 0
+    console.log(random)
+    setGameStart(false)
+    setGameOver(false)
   }
 
   const startGameHandler = (inputNumber) => {
+    setGameStart(true)
+    setGameOver(false)
     setUserGuess(inputNumber)
-    setCount = 0
   }
 
-  const gameOverHandler = (numofRounds) => {
-    setCount = (numofRounds)
+  const gameOverHandler = () => {
+    setGameOver(true)
     setMsg('Here is your picture')
+    setGameStart(false)
   }
 
-  let content = <StartScreen onStartGame={startGameHandler} />
-  if (userGuess && count <= 0) {
-    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} onStartGame={startGameHandler}/>
-  } else if (count > 0) {
+  let content = <StartScreen onStartGame={startGameHandler} onRandomNum={randomNumber} />
+  if (isgameStart) {
+    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} onStartGame={startGameHandler} />
+    console.log(isgameStart)
+    console.log(isgameOver)
+  }
+  else if (isgameOver) {
     content = <EndScreen userGuess={userGuess} onRestart={newGameHandler} />
   }
+
 
   return (
     <>
@@ -55,10 +67,7 @@ export default function App(props) {
         />
         <Header title='Guess My Number'>
         </Header>
-        {/* {content} */}
-        {/* <GameScreen/> */}
-        <EndScreen/>
-        {/* <StartScreen></StartScreen> */}
+        {content}
         <StatusBar style="auto" />
       </View>
       <View style={styles.footer} >

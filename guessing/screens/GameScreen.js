@@ -21,29 +21,28 @@ function getMessage(props) {
 }
 
 export default function GameScreen(props) {
-  //buttoncontent
+  const [msg, setMsg] = useState('')
+  const [curGuess, setCurGuess] = useState(0)
+
+  let buttonContent =
+    <View style={styles.buttons} >
+      <Button title="I am Done" color='#ff4676' />
+      <Button title='Guess Again' color='#1d91c0' />
+    </View>
+
 
   return (
-    <View>
-      <Card>
-        {/* <Text style={styles.title}>You have chosen 1028, That's not my number! Guess lower!</Text> */}
-        <Text style={styles.title}>Congrats! You Won!</Text>
-      </Card>
-      {/* <View style={styles.buttons}>
-          <Button
-            title="I am Done"
-            color='#ff4676'
-          />
-          <Button
-            title='Guess Again'
-            color='#1d91c0'
-          />
-        </View> */}
+      <View>
+        <Card>
+          {/* <Text style={styles.title}>You have chosen 1028, That's not my number! Guess lower!</Text> */}
+          <Text style={styles.title}>Congrats! You Won!</Text>
+        </Card>
 
 
-      <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
-    </View>
-  )
+
+        <SingleButton onPress={props.onGameOver()}>Thank you!</SingleButton>
+      </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 21,
     color: '#072c1d',
-    lineHeight:35
+    lineHeight: 35
   },
   input: {
     alignSelf: "center",
