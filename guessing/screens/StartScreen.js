@@ -34,10 +34,9 @@ export default function StartScreen(props) {
       ]);
       return;
     }
-    setInputNumber(parseInt(input))
-    setInput("");
-    Keyboard.dismiss();
-    props.onStartGame(inputNumber)
+    props.onStartGame(parseInt(input))
+    setInput("")
+    Keyboard.dismiss()
   }
 
 

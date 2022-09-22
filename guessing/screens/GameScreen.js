@@ -21,12 +21,7 @@ export default function GameScreen(props) {
   const { userGuess, random } = props;
 
   useEffect(() => {
-
     setMsg(getMessage(userGuess, random))
-    console.log(msg)
-    console.log(userGuess)
-    console.log(random)
-
   }, [msg, userGuess, random]);
 
   return (

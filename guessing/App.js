@@ -16,7 +16,7 @@ function getRandom(min, max) {
 export default function App(props) {
 
   const [random, setRandom] = useState(getRandom(1020, 1029))
-  const [userGuess, setUserGuess] = useState('')
+  const [userGuess, setUserGuess] = useState(0)
   const [isgameStart, setGameStart] = useState(false)
   const [isgameOver, setGameOver] = useState(false)
 
@@ -25,7 +25,6 @@ export default function App(props) {
     // console.log(random)
   }
   const newGameHandler = () => {
-    setUserGuess(null)
     setGameStart(false)
     setGameOver(false)
   }
@@ -39,11 +38,12 @@ export default function App(props) {
   const gameOverHandler = () => {
     setGameOver(true)
     setGameStart(false)
+    setRandom(getRandom(1020, 1029))
   }
 
   let content = <StartScreen onStartGame={startGameHandler} onRandomNum={randomNumber} />
   if (isgameStart) {
-    content = <GameScreen userGuess={userGuess} onGameOver={gameOverHandler} onBacktoGame={newGameHandler} />
+    content = <GameScreen userGuess={userGuess} random={random} onGameOver={gameOverHandler} onBacktoGame={newGameHandler} />
   }
   else if (isgameOver) {
     content = <EndScreen userGuess={userGuess} onRestart={newGameHandler} />
@@ -60,6 +60,7 @@ export default function App(props) {
         <Header title='Guess My Number'>
         </Header>
         {content}
+        {console.log(random)}
         <StatusBar style="auto" />
       </View>
       <View style={styles.footer} >
