@@ -11,6 +11,7 @@ import {
 import React, { useState } from 'react'
 import Card from '../components/Card';
 import Colors from '../constants/Colors';
+import Buttons from '../components/Buttons';
 
 export default function StartScreen(props) {
 
@@ -54,20 +55,9 @@ export default function StartScreen(props) {
             onChangeText={numberInputHandler}
             maxLength={4}
           />
-          <View style={styles.buttons}>
-            <Button
-              title='reset'
-              color={Colors.ButtonRed}
-              onPress={resetInputHandler}
-            />
-            <Button
-              title='confirm'
-              color={Colors.ButtonBlue}
-              onPress={confirmInputHandler}
-            // onPress={()=>{confirmInputHandler;props.onStartGame(inputNumber)}}
-            />
-          </View>
+          <Buttons button1='reset' button2='confirm' onPress1={resetInputHandler} onPress2={confirmInputHandler}></Buttons>
         </Card>
+
       </View>
       {/* <SingleButton onPress={props.onRandomNum}>Generate a Number</SingleButton> */}
     </TouchableWithoutFeedback>
@@ -92,14 +82,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderColor: Colors.Title,
-  },
-  buttons: {
-    alignSelf: "center",
-    justifyContent: 'space-around',
-    flexDirection: 'row',
-    marginHorizontal: 20,
-    marginTop: 25,
-    width: 280,
   },
 });
 

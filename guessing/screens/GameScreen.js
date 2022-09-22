@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import SingleButton from '../components/SingleButton'
 import Colors from '../constants/Colors'
+import Buttons from '../components/Buttons'
 
 function getMessage(target, random) {
   if (target < random) { return 'You have chosen ' + target + ', That is not my number! Guess higher!' }
@@ -29,12 +30,12 @@ export default function GameScreen(props) {
         <Text style={styles.title}>{msg}</Text>
       </Card>
       {msg !== "Congrats! You Won!" ? (
-        <View style={styles.buttons} >
-          <Button title="I am Done" color={Colors.ButtonRed} onPress={props.onGameOver} />
-          <Button title='Guess Again' color={Colors.ButtonBlue} onPress={props.onBacktoGame} />
-        </View>) : (
-        <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>)}
+        <Buttons button1='I am Done' button2='Guess Again' onPress1={props.onGameOver} onPress2={props.onBacktoGame}></Buttons>
+      ) : (
+        <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
+      )}
     </View>
+
   )
 }
 
