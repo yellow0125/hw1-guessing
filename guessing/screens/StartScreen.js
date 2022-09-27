@@ -24,7 +24,7 @@ export default function StartScreen(props) {
   };
 
   const confirmInputHandler = () => {
-    const guessNumber = parseInt(input);
+    const guessNumber = parseInt(input)
     if (isNaN(guessNumber) || guessNumber < 1020 || guessNumber > 1029) {
       Alert.alert("Invalid number!", "Number has to be between 1020 and 1029", [
         { text: "Okay", style: "destructive", onPress: resetInputHandler }

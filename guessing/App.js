@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import Colors from './constants/Colors';
@@ -52,7 +52,7 @@ export default function App(props) {
 
   return (
     <>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <LinearGradient
           colors={[
             Colors.BgDarkGreen,
@@ -71,7 +71,7 @@ export default function App(props) {
         {content}
         {/* {console.log(random)} */}
         <StatusBar style="auto" />
-      </View>
+      </SafeAreaView>
       <View style={styles.footer} >
         <Footer ></Footer>
       </View>
