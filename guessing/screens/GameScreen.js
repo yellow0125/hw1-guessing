@@ -3,13 +3,15 @@ import {
   StyleSheet,
   Text,
   Image,
-  Dimensions
+  Dimensions,
+  Modal,
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import SingleButton from '../components/SingleButton'
 import Colors from '../constants/Colors'
 import Buttons from '../components/Buttons'
+import { LinearGradient } from 'expo-linear-gradient'
 
 function getMessage(target, random) {
   if (target < random) { return 'You have chosen ' + target + ', That is not my number! Guess higher!' }
@@ -19,32 +21,47 @@ function getMessage(target, random) {
 
 export default function GameScreen(props) {
   const [msg, setMsg] = useState('')
-  const { userGuess, random } = props;
+  const { userGuess, random, modal } = props;
 
   useEffect(() => {
     setMsg(getMessage(userGuess, random))
   }, [msg, userGuess, random]);
 
   return (
-    <View>
-      <Card>
-        <Text style={styles.title}>{msg}</Text>
-        {msg == "Congrats! You Won!" ? (
-          <View style={styles.imageContainer}>
-            <Image
-              source={require('../assets/won.png')}
-              style={styles.image}
-              resizeMode="cover"
-            />
-          </View>
-        ) : ('')}
-      </Card>
-      {msg !== "Congrats! You Won!" ? (
-        <Buttons button1='I am Done' button2='Guess Again' onPress1={props.onGameOver} onPress2={props.onBacktoGame}></Buttons>
-      ) : (
-        <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
-      )}
-    </View>
+    <Modal visible={modal}>
+      <LinearGradient
+        colors={[
+          Colors.BgDarkGreen,
+          Colors.BgDarkGreen,
+          Colors.BgGreen,
+          Colors.BgLightGreen,
+          Colors.BgDarkYellow,
+          Colors.BgYellow,
+          Colors.BgLightYellow,
+          Colors.BgLighterYellow,
+          Colors.BgWhite,]}
+        style={styles.background}
+      />
+      <View style={styles.container}>
+        <Card>
+          <Text style={styles.title}>{msg}</Text>
+          {msg == "Congrats! You Won!" ? (
+            <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/won.png')}
+                style={styles.image}
+                resizeMode="cover"
+              />
+            </View>
+          ) : ('')}
+        </Card>
+        {msg !== "Congrats! You Won!" ? (
+          <Buttons button1='I am Done' button2='Guess Again' onPress1={props.onGameOver} onPress2={props.onBacktoGame}></Buttons>
+        ) : (
+          <SingleButton onPress={props.onGameOver}>Thank you!</SingleButton>
+        )}
+      </View>
+    </Modal>
   )
 }
 
@@ -75,6 +92,17 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%"
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 900,
+  },
+  container:{
+    marginTop:200
+
   },
 
 });

@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
   title:{
     alignSelf: "center",
     justifyContent: 'center',
-    marginTop: 22,
+    // marginTop: 22,
     marginBottom:50,
-    paddingTop: 36,
+    paddingTop: 22,
     paddingLeft:110 ,
     paddingRight:110 ,
     backgroundColor:Colors.BgDarkGreen,

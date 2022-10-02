@@ -17,36 +17,38 @@ export default function App(props) {
 
   const [random, setRandom] = useState(getRandom(1020, 1029))
   const [userGuess, setUserGuess] = useState(0)
-  const [isgameStart, setGameStart] = useState(false)
+  // const [isgameStart, setGameStart] = useState(false)
   const [isgameOver, setGameOver] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false)
+  const makeModalVisible = () => { setModalVisible(true) }
+  const makeModalInvisible = () => { setModalVisible(false) }
 
   const newGameHandler = () => {
     setRandom(getRandom(1020, 1029))
-    setGameStart(false)
     setGameOver(false)
     // console.log(random)
   }
   const backToGameHandler = () => {
-    setGameStart(false)
-    setGameOver(false)
+    makeModalInvisible()
+    // setGameOver(false)
   }
 
   const startGameHandler = (inputNumber) => {
-    setGameStart(true)
+    makeModalVisible()
     setGameOver(false)
     setUserGuess(inputNumber)
   }
 
   const gameOverHandler = () => {
     setGameOver(true)
-    setGameStart(false)
+    makeModalInvisible()
   }
 
   let content = <StartScreen onStartGame={startGameHandler} />
-  if (isgameStart) {
-    content = <GameScreen userGuess={userGuess} random={random} onGameOver={gameOverHandler} onBacktoGame={backToGameHandler} />
+  if (modalVisible) {
+    content = <GameScreen modal={modalVisible} userGuess={userGuess} random={random} onGameOver={gameOverHandler} onBacktoGame={backToGameHandler} />
   }
-  else if (isgameOver) {
+  if (isgameOver) {
     content = <EndScreen userGuess={userGuess} random={random} onRestart={newGameHandler} />
   }
 
