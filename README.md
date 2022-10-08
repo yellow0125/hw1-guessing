@@ -16,6 +16,7 @@ If the input value is invalid, an alert will be shown to the user with a button 
 <img src="https://github.com/yellow0125/hw1-guessing/blob/main/img/gaming.png" height="500" alt="startscreen"/>    
 
 The Game Screen is shown in a modal, which shows a message to the user notifying them if the number they entered matches what you have chosen or if it's bigger or smaller.   
+- when user pick a number and it will also make the modal visible
 - If they have won they will see another message congratulating them.  
 - If they haven't won, users can choose to continue the game (taken back to the starting game to guess again) or choose to end the game. 
 
